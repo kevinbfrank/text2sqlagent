@@ -63,22 +63,6 @@ LANGCHAIN_PROJECT=text2sql-agent
 
 ## Usage
 
-### Using the Agent in Code
-
-```python
-from agent import create_sql_agent
-
-# Create the agent
-agent = create_sql_agent()
-
-# Ask a question
-result = agent.invoke({
-    "messages": [{"role": "user", "content": "What are the top 5 best-selling artists?"}]
-})
-
-print(result["messages"][-1].content)
-```
-
 ### Interactive Tutorial
 
 Explore the agent capabilities with the included Jupyter notebook:
