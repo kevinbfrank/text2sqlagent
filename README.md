@@ -26,24 +26,30 @@ Uses the [Chinook database](https://github.com/lerocha/chinook-database) - a sam
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/kevinbfrank/text2sqlagent.git
-cd text2sqlagent
+git clone https://github.com/kevinbfrank/text-to-sql-agent.git
+cd text-to-sql-agent
 ```
 
-2. Create a virtual environment and install dependencies:
+2. Download the Chinook database:
+```bash
+# Download the SQLite database file
+curl -L -o chinook.db https://github.com/lerocha/chinook-database/raw/master/ChinookDatabase/DataSources/Chinook_Sqlite.sqlite
+```
+
+3. Create a virtual environment and install dependencies:
 ```bash
 # Using uv (recommended)
 uv venv --python 3.11
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-uv pip install -r requirements.txt
+uv pip install -e .
 
 # Or using standard pip
 python3.11 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -e .
 ```
 
-3. Set up your environment variables:
+4. Set up your environment variables:
 ```bash
 cp .env.example .env
 # Edit .env and add your API keys
@@ -57,11 +63,28 @@ ANTHROPIC_API_KEY=your_anthropic_api_key_here
 Optional for LangSmith tracing:
 ```
 LANGCHAIN_TRACING_V2=true
+LANGSMITH_ENDPOINT=https://api.smith.langchain.com
 LANGCHAIN_API_KEY=your_langsmith_api_key_here
 LANGCHAIN_PROJECT=text2sql-agent
 ```
 
 ## Usage
+
+### Command Line Interface
+
+Run the agent from the command line with a natural language question:
+
+```bash
+python agent.py "What are the top 5 best-selling artists?"
+```
+
+```bash
+python agent.py "Which employee generated the most revenue?"
+```
+
+```bash
+python agent.py "How many customers are from Canada?"
+```
 
 ### Interactive Tutorial
 
@@ -125,10 +148,10 @@ system_prompt=SYSTEM_PROMPT.format(
 ```
 text2sqlagent/
 ├── agent.py              # Core agent implementation
-├── test_agent.py         # Interactive CLI for testing
 ├── tutorial.ipynb        # Jupyter tutorial notebook
 ├── chinook.db           # Sample SQLite database (gitignored)
-├── requirements.txt      # Python dependencies
+├── pyproject.toml       # Project configuration and dependencies
+├── uv.lock              # Locked dependency versions
 ├── .env.example         # Environment variable template
 ├── .gitignore           # Git ignore rules
 └── README.md            # This file
@@ -136,14 +159,15 @@ text2sqlagent/
 
 ## Requirements
 
+All dependencies are specified in `pyproject.toml`:
+
 - langchain >= 1.2.3
 - langchain-anthropic >= 1.3.1
 - langchain-community >= 0.3.0
 - langgraph >= 1.0.6
 - sqlalchemy >= 2.0.0
 - python-dotenv >= 1.0.0
-
-See `requirements.txt` for complete list.
+- rich >= 13.0.0
 
 ## License
 
