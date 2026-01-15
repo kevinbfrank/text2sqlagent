@@ -19,7 +19,7 @@ Uses the [Chinook database](https://github.com/lerocha/chinook-database) - a sam
 ### Prerequisites
 
 - Python 3.11 or higher
-- Anthropic API key ([get one here](https://console.anthropic.com/))
+- Anthropic API key ([get one here](https://console.anthropic.com/)) (Or you can use a different model provider)
 - (Optional) LangSmith API key for tracing ([sign up here](https://smith.langchain.com/))
 
 ### Installation
