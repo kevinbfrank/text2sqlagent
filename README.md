@@ -7,7 +7,6 @@ A natural language to SQL query agent powered by LangChain and Claude Sonnet 4.5
 - Natural language to SQL query conversion
 - Automatic query validation and error correction
 - Support for complex queries (JOINs, aggregations, subqueries)
-- Built-in safety controls (read-only, no DML statements)
 - LangSmith integration for tracing and debugging
 - Interactive tutorial notebook included
 
