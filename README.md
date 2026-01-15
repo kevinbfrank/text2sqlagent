@@ -1,6 +1,6 @@
 # Text-to-SQL Agent
 
-A natural language to SQL query agent powered by LangChain and Claude Sonnet 4.5. Ask questions about your database in plain English and get accurate SQL queries and results.
+A natural language to SQL query agent powered by LangChain. Ask questions about your database in plain English and get accurate SQL queries and results.
 
 ## Features
 
@@ -176,7 +176,6 @@ MIT
 ## Acknowledgments
 
 - Built with [LangChain](https://www.langchain.com/)
-- Powered by [Claude Sonnet 4.5](https://www.anthropic.com/claude)
 - Uses the [Chinook Database](https://github.com/lerocha/chinook-database)
 - Tracing via [LangSmith](https://smith.langchain.com/)
 
