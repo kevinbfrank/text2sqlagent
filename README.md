@@ -73,29 +73,9 @@ jupyter notebook tutorial.ipynb
 
 The tutorial includes:
 - Step-by-step agent construction
-- 8+ example queries
+- Example queries
 - LangSmith tracing setup
 - Database schema reference
-
-## Example Queries
-
-The agent can handle a wide variety of SQL queries:
-
-**Simple queries:**
-- "How many customers are from Canada?"
-- "List all genres in the database"
-
-**Aggregations:**
-- "What is the total revenue by country?"
-- "Which artist has the most albums?"
-
-**Complex JOINs:**
-- "What are the top 5 best-selling tracks?"
-- "Show me all albums by AC/DC"
-
-**Business analytics:**
-- "Which employee has generated the most sales revenue?"
-- "What's the average track length by genre?"
 
 ## How It Works
 
@@ -108,33 +88,6 @@ The agent uses LangChain's `create_agent` with the following workflow:
 5. **Execute** - Runs the query against the database
 6. **Retry** - If errors occur, automatically rewrites and retries
 7. **Format** - Returns results in a readable format
-
-## Architecture
-
-```
-User Question
-     ↓
-Claude Sonnet 4.5 (LLM)
-     ↓
-SQL Toolkit (Tools)
-     ├─ list_tables
-     ├─ get_schema
-     ├─ query_checker
-     └─ execute_query
-     ↓
-SQLite Database (Chinook)
-     ↓
-Formatted Answer
-```
-
-## Safety Features
-
-- **Read-only access**: Only SELECT queries are allowed
-- **No DML statements**: Cannot INSERT, UPDATE, DELETE, or DROP
-- **Query validation**: All queries are validated before execution
-- **Automatic error recovery**: Failed queries are rewritten and retried
-- **Result limiting**: Queries are limited to 5 results by default (configurable)
-- **Sample data only**: Schema inspection shows only 3 sample rows per table
 
 ## LangSmith Integration
 
